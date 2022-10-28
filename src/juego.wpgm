@@ -2,12 +2,12 @@ import wollok.game.*
 import example.*
 
 program donkeyKong{
-  game.width(20)
-  game.height(20)
+  game.width(15)
+  game.height(15)
   //game.cellSize(7)
-  //game.title("Juego")
-  //game.boardGround("playa.jpg") // o el nombre con el que lo hayas bajado
-  game.addVisual(fondo)
+  game.title("Donkey Kong")
+  game.boardGround("fondo.jpg")
   game.addVisual(plataforma)
+  game.addVisual(plataforma2)
   game.start()
 }

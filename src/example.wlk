@@ -12,6 +12,12 @@ object plataforma {
   //method image() = "fondo.jpg"
 }
 
+object plataforma2 {
+  var property position = game.at(3,0)
+  const property image = "plataforma.png"
+  //method image() = "fondo.jpg"
+}
+
 /*
 
 object movimiento {
