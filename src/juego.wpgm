@@ -2,12 +2,66 @@ import wollok.game.*
 import example.*
 
 program donkeyKong{
-  game.width(15)
-  game.height(15)
-  //game.cellSize(7)
-  game.title("Donkey Kong")
-  game.boardGround("fondo.jpg")
-  game.addVisual(plataforma)
-  game.addVisual(plataforma2)
+	game.width(20)
+	game.height(20)
+	game.cellSize(50)
+	game.title("Donkey Kong")
+	game.boardGround("fondo.jpg")
+	game.addVisual(p0)
+    game.addVisual(p1)
+	game.addVisual(p2)
+	game.addVisual(p3)
+	game.addVisual(p4)
+	game.addVisual(p5)
+    game.addVisual(p6)
+	game.addVisual(p7)
+    game.addVisual(p8)
+    game.addVisual(p9)
+	game.addVisual(p10)
+	game.addVisual(p11)
+	game.addVisual(p12)
+	game.addVisual(p13)
+    game.addVisual(p14)
+	game.addVisual(p15)
+	game.addVisual(p16)
+	game.addVisual(p17)
+	game.addVisual(p18)
+    game.addVisual(p19)
+	game.addVisual(p20)
+    game.addVisual(p21)
+    game.addVisual(p22)
+	game.addVisual(p23)
+	game.addVisual(p24)
+	game.addVisual(p25)
+	game.addVisual(p26)
+	game.addVisual(p27)
+	game.addVisual(p28)
+	game.addVisual(p29)
+    game.addVisual(p30)
+	game.addVisual(p31)
+    game.addVisual(p32)
+    game.addVisual(p33)
+	game.addVisual(p34)
+	game.addVisual(p35)
+	game.addVisual(p36)
+	game.addVisual(p37)
+	game.addVisual(p38)
+	game.addVisual(donkeyKong)
+	game.addVisualCharacter(mario)
+  
+//	keyboard.up().onPressDo { mario.move(mario.position().up(1)) }
+//	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
+//	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
+//	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
+
+
+//	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
+
+
+//	keyboard.up().onPressDo { mario.position(mario.position().up(1)) }
+//	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
+//	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
+//	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
+  
   game.start()
 }
