@@ -1,5 +1,7 @@
 import wollok.game.*
 import example.*
+import niveles.*
+import plataformas.*
 
 program donkeyKong{
 	game.width(20)
@@ -7,161 +9,21 @@ program donkeyKong{
 	game.cellSize(50)
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
-	
+	game.onTick(1000,"gravedad",{mario.bajar(1)})
 
-	
-	//Piso 0
-	//game.addVisual(p0)
-    game.addVisual(p10)
-	game.addVisual(p20)
-	game.addVisual(p30)
-	game.addVisual(p40)
-	game.addVisual(p50)
-    game.addVisual(p60)
-	game.addVisual(p70)
-    game.addVisual(p80)
-    game.addVisual(p90)
-	game.addVisual(p100)
-	game.addVisual(p110)
-	game.addVisual(p120)
-	game.addVisual(p130)
-    game.addVisual(p140)
-	game.addVisual(p150)
-	game.addVisual(p160)
-	game.addVisual(p170)
-	game.addVisual(p180)
-    //game.addVisual(p190)
-    
-    //Piso 1
-    //game.addVisual(p03)
-    game.addVisual(p13)
-	game.addVisual(p23)
-	game.addVisual(p33)
-	game.addVisual(p43)
-	game.addVisual(p53)
-    game.addVisual(p63)
-	game.addVisual(p73)
-    game.addVisual(p83)
-    game.addVisual(p93)
-	game.addVisual(p103)
-	game.addVisual(p113)
-	game.addVisual(p123)
-	game.addVisual(p133)
-    game.addVisual(p143)
-	game.addVisual(p153)
-	game.addVisual(p163)
-	game.addVisual(p173)
-	game.addVisual(p183)
-    //game.addVisual(p193)
-    
-    //Piso 2
-    //game.addVisual(p06)
-    game.addVisual(p16)
-	game.addVisual(p26)
-	game.addVisual(p36)
-	game.addVisual(p46)
-    game.addVisual(p56)
-	game.addVisual(p66)
-    game.addVisual(p76)
-    game.addVisual(p86)
-	game.addVisual(p96)
-	game.addVisual(p106)
-	game.addVisual(p116)
-	game.addVisual(p126)
-    game.addVisual(p136)
-	game.addVisual(p146)
-	game.addVisual(p156)
-	game.addVisual(p166)
-	game.addVisual(p176)
-    game.addVisual(p186)
-	//game.addVisual(p196)
-    
-    //Piso 3
-    //game.addVisual(p09)
-    game.addVisual(p19)
-	game.addVisual(p29)
-	game.addVisual(p39)
-	game.addVisual(p49)
-    game.addVisual(p59)
-	game.addVisual(p69)
-    game.addVisual(p79)
-    game.addVisual(p89)
-	game.addVisual(p99)
-	game.addVisual(p109)
-	game.addVisual(p119)
-	game.addVisual(p129)
-    game.addVisual(p139)
-	game.addVisual(p149)
-	game.addVisual(p159)
-	game.addVisual(p169)
-	game.addVisual(p179)
-    game.addVisual(p189)
-    //game.addVisual(p199)
-    
-    //Piso 4
-    //game.addVisual(p012)
-	game.addVisual(p112)
-	game.addVisual(p212)
-	game.addVisual(p312)
-    game.addVisual(p412)
-	game.addVisual(p512)
-    game.addVisual(p612)
-    game.addVisual(p712)
-	game.addVisual(p812)
-	game.addVisual(p912)
-	game.addVisual(p1012)
-	game.addVisual(p1112)
-    game.addVisual(p1212)
-	game.addVisual(p1312)
-	game.addVisual(p1412)
-	game.addVisual(p1512)
-	game.addVisual(p1612)
-    game.addVisual(p1712)
-    game.addVisual(p1812)
-    //game.addVisual(p1912)
-    
-    //Piso 5
-    //game.addVisual(p015)
-	game.addVisual(p115)
-	game.addVisual(p215)
-	game.addVisual(p315)
-    game.addVisual(p415)
-	game.addVisual(p515)
-    game.addVisual(p615)
-    game.addVisual(p715)
-	game.addVisual(p815)
-	game.addVisual(p915)
-	game.addVisual(p1015)
-	game.addVisual(p1115)
-    game.addVisual(p1215)
-	game.addVisual(p1315)
-	game.addVisual(p1415)
-	game.addVisual(p1515)
-	game.addVisual(p1615)
-    game.addVisual(p1715)
-    game.addVisual(p1815)
-    //game.addVisual(p1915)    
+	    
     
     //Piso Final
-    game.addVisual(p717)
-    game.addVisual(p817)
-    game.addVisual(p917)
-    game.addVisual(p1017)
-
-	game.addVisual(e18)
-	game.addVisual(e41)
-	game.addVisual(e42)
-	game.addVisual(e43)
-
-	game.addVisual(bco1)
-	game.addVisual(bn1)
-	game.addVisual(bv1)
-	game.addVisual(bce1)
+  
     
 	game.addVisual(donkeyKong)
 	game.addVisualCharacter(mario)
 	game.addVisual(mate)
-  
+	game.addVisual(bco1)
+	game.addVisual(bn1)
+	game.addVisual(bv1)
+	game.addVisual(bce1)
+		  
 //	keyboard.up().onPressDo { mario.move(mario.position().up(1)) }
 //	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
 //	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
@@ -175,6 +37,6 @@ program donkeyKong{
 //	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
 //	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
 //	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
-  
+  nivel1.cargar()
   game.start()
 }
