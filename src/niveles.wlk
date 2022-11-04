@@ -35,7 +35,7 @@ object nivel1{
 }
 
 object interfaz{
-	const property posCorazones = []
+	const property corazones = [corazon1,corazon2,corazon3,corazon4,corazon5]
 	method dibujar(dibujo){
 		game.addVisual(dibujo)
 		return dibujo
@@ -45,18 +45,18 @@ object interfaz{
 		self.cargar()
 	}
 	method cargar(){
-		(14..18).forEach{n=>posCorazones.add(new Position(x=10,y=n))}
+		//(14..18).forEach{n=>posCorazones.add(new Position(x=10,y=n))}
 	}
-	
-
 }
 
 class Corazon{
 	const property position
   	var property image = "corLleno.png"
-	method cambiar(){
-		//removeVisual()
-		image = "corVacio.png"
+	method vaciar(){
+		if(image == "corLleno.png") image = "corVacio.png"
+	}
+	method llenar(){
+		if(image == "corVacio.png") image = "corLleno.png"
 	}
 }
 

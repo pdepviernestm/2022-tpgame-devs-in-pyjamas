@@ -12,19 +12,27 @@ program donkeyKong{
 	game.cellSize(50)
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
-	//game.onTick(1000,"gravedad",{mario.bajar(1)})
-  
+	
+	game.onTick(500,"gravedad",{mario.gravedad()})
+	
+  	keyboard.up().onPressDo{mario.subir()}
     keyboard.down().onPressDo{mario.bajar()}
-    keyboard.up().onPressDo{mario.saltar()}
-    
+    keyboard.space().onPressDo{mario.saltar()}
+    keyboard.right().onPressDo{mario.derecha()}
+    keyboard.left().onPressDo{mario.izquierda()}
+	keyboard.r().onPressDo{mario.recuperar()}
+	
 	
 	//game.addVisual(mate)
 	game.addVisual(bco1)
 	game.addVisual(bn1)
-	game.addVisual(bv1)
-	game.addVisual(bce1)
-	bco1.iniciar()
-		  
+	//game.addVisual(bv1)
+	//game.addVisual(bce1)
+	//game.onTick(4000,"barriles",{(new BarrilComun()).iniciar()})
+	
+	game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro()].get((0..1).anyOne()).iniciar()})
+	
+	
 	game.addVisual(corazon1)
 	game.addVisual(corazon2)
 	game.addVisual(corazon3)
@@ -32,15 +40,9 @@ program donkeyKong{
 	game.addVisual(corazon5)
 
 //	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
-
-
-//	keyboard.up().onPressDo { mario.position(mario.position().up(1)) }
-//	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
-//	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
-//	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
-	game.addVisual(donkeyKong)
-	game.addVisualCharacter(mario)
-
   	nivel1.cargar()
-  game.start()
+  	game.addVisual(donkeyKong)
+	game.addVisual(mario)
+  	
+  	game.start()
 }

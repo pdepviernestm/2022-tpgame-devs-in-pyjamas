@@ -1,28 +1,52 @@
 import wollok.game.*
 import consultas.*
+import niveles.*
+import barril.*
 
 object mario{
 	var property position = game.at(5,5)
   	const property image = "mario.png"
-  	var property corazones = 3
-  	method move(nuevaPosicion) {
-		self.position(nuevaPosicion)
-	}	
-	//method mover(direccion,personaje){
-    //    personaje.position(direccion.siguiente(personaje.position()))
-    //}
+  	var property vida = 5
     method bajar(){
-    	//if(consulta.existePlataforma(self)) position = position.up(1)
-    	position = position.up(1)
+    	if(consulta.existeEscaleraAbajo(self)) position = position.down(1)
+    }
+    method subir(){
+    	if(consulta.existeEscaleraArriba(self)) position = position.up(1)
     }
     method saltar(){
-    	if(consulta.existePlataforma(self)) game.schedule(500, {position = position.down(1)})
+    	if(!consulta.existeEscaleraArriba(self) && consulta.existePlataforma(self)) {
+    		game.removeTickEvent("gravedad")
+    		position = position.up(1)
+    		game.schedule(250, {position = position.down(1) game.onTick(500,"gravedad",{self.gravedad()})})
+    		//game.onTick(500,"gravedad",{self.gravedad()})
+    	}
+    }
+    method derecha(){
+    	if (!consulta.existePlataformaDer(self)) position = position.right(1)
+    }
+    method izquierda(){
+    	if (!consulta.existePlataformaIzq(self)) position = position.left(1)
     }
     method danio(n){
-    	corazones = (corazones - n).max(0)
+    	vida = (vida - n).max(0)
+    	if(vida==0) game.say(self,"mamma mia")
+    	interfaz.corazones().get(vida).vaciar()
     }
-    //keyboard.up().onPressDo { mario.move(mario.position().up(1)) }
-	//keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
-	//keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
-	//keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
+    method puedePisarse() = false
+	method esEscalera() = false
+	method esBarril() = false
+	method gravedad(){
+		if (!consulta.existePlataforma(self)) position = position.down(1)
+	}
+	method colision(){
+		if(consulta.existeBarril(self)){
+			game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto()}
+			game.removeTickEvent("colision")
+			game.schedule(500,{game.onTick(500,"colision",{self.colision()})})
+		} 
+	}
+	method recuperar(){
+		interfaz.corazones().get(vida).llenar()
+		vida = (vida+1).min(5)
+	}
 }
