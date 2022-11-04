@@ -2,6 +2,9 @@ import wollok.game.*
 import example.*
 import niveles.*
 import plataformas.*
+import barril.*
+import direcciones.*
+import mario.*
 
 program donkeyKong{
 	game.width(20)
@@ -9,26 +12,24 @@ program donkeyKong{
 	game.cellSize(50)
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
-	game.onTick(1000,"gravedad",{mario.bajar(1)})
-
-	    
-    
-    //Piso Final
+	//game.onTick(1000,"gravedad",{mario.bajar(1)})
   
+    keyboard.down().onPressDo{mario.bajar()}
+    keyboard.up().onPressDo{mario.saltar()}
     
-	game.addVisual(donkeyKong)
-	game.addVisualCharacter(mario)
-	game.addVisual(mate)
+	
+	//game.addVisual(mate)
 	game.addVisual(bco1)
 	game.addVisual(bn1)
 	game.addVisual(bv1)
 	game.addVisual(bce1)
+	bco1.iniciar()
 		  
-//	keyboard.up().onPressDo { mario.move(mario.position().up(1)) }
-//	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
-//	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
-//	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
-
+	game.addVisual(corazon1)
+	game.addVisual(corazon2)
+	game.addVisual(corazon3)
+	game.addVisual(corazon4)
+	game.addVisual(corazon5)
 
 //	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
 
@@ -37,6 +38,9 @@ program donkeyKong{
 //	keyboard.down().onPressDo { mario.move(mario.position().down(1)) }
 //	keyboard.left().onPressDo { mario.move(mario.position().left(1)) }
 //	keyboard.right().onPressDo { mario.move(mario.position().right(1)) }
-  nivel1.cargar()
+	game.addVisual(donkeyKong)
+	game.addVisualCharacter(mario)
+
+  	nivel1.cargar()
   game.start()
 }
