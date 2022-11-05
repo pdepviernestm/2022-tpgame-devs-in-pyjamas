@@ -13,36 +13,18 @@ program donkeyKong{
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
 	
-	game.onTick(500,"gravedad",{mario.gravedad()})
 	
-  	keyboard.up().onPressDo{mario.subir()}
-    keyboard.down().onPressDo{mario.bajar()}
-    keyboard.space().onPressDo{mario.saltar()}
-    keyboard.right().onPressDo{mario.derecha()}
-    keyboard.left().onPressDo{mario.izquierda()}
-	keyboard.r().onPressDo{mario.recuperar()}
 	
 	
 	//game.addVisual(mate)
-	game.addVisual(bco1)
-	game.addVisual(bn1)
+	
 	//game.addVisual(bv1)
 	//game.addVisual(bce1)
 	//game.onTick(4000,"barriles",{(new BarrilComun()).iniciar()})
 	
-	game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro()].get((0..1).anyOne()).iniciar()})
-	
-	
-	game.addVisual(corazon1)
-	game.addVisual(corazon2)
-	game.addVisual(corazon3)
-	game.addVisual(corazon4)
-	game.addVisual(corazon5)
 
 //	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
-  	nivel1.cargar()
-  	game.addVisual(donkeyKong)
-	game.addVisual(mario)
+  	intro.cargar()
   	
   	game.start()
 }
