@@ -2,6 +2,7 @@ import wollok.game.*
 import consultas.*
 import niveles.*
 import barril.*
+import example.*
 
 object mario{
 	var property position = game.at(5,5)
@@ -40,10 +41,24 @@ object mario{
 	}
 	method colision(){
 		if(consulta.existeBarril(self)){
-			game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto()}
-			game.removeTickEvent("colision")
-			game.schedule(500,{game.onTick(500,"colision",{self.colision()})})
-		} 
+//			game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto()}
+//			game.removeTickEvent("colision")
+//			game.schedule(500,{game.onTick(500,"colision",{self.colision()})})
+			game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto() b.detener()}
+			//game.removeTickEvent("colision")
+			//game.schedule(25,{game.onTick(500,"colision",{self.colision()})})
+		}
+		if(donkeyKong.listaPosiciones().contains(position)){
+//			game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto()}
+//			game.removeTickEvent("colision")
+//			game.schedule(500,{game.onTick(500,"colision",{self.colision()})})
+			
+			//game.getObjectsIn(position).filter{obj=>obj.esDK()}.forEach{b=>b.efecto() b.detener()}
+			self.danio(5)
+			
+			//game.removeTickEvent("colision")
+			//game.schedule(25,{game.onTick(500,"colision",{self.colision()})})
+		}  
 	}
 	method recuperar(){
 		interfaz.corazones().get(vida).llenar()

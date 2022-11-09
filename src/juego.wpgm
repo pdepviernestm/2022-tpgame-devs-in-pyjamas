@@ -24,7 +24,8 @@ program donkeyKong{
 	
 
 //	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
-  	intro.cargar()
+  	//intro.cargar()
+  	nivel1.cargar()
   	
   	game.start()
 }

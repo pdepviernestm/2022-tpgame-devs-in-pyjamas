@@ -10,16 +10,16 @@ object nivel1{
 	const property posEscaleras = []
 	method cargar(){
 		//Config
-	game.addVisual(bco1)
-	game.addVisual(bn1)
-	game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro()].get((0..1).anyOne()).iniciar()})
+	//game.addVisual(bco1)
+	//game.addVisual(bn1)
+	//game.addVisual(bce1)
+	game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro(),new BarrilCeleste(), new BarrilVerde()].get((0..3).anyOne()).iniciar()})
 	game.addVisual(corazon1)
 	game.addVisual(corazon2)
 	game.addVisual(corazon3)
 	game.addVisual(corazon4)
 	game.addVisual(corazon5)
 	game.addVisual(donkeyKong)
-	game.addVisual(mario)
   	game.onTick(500,"gravedad",{mario.gravedad()})
   	keyboard.up().onPressDo{mario.subir()}
     keyboard.down().onPressDo{mario.bajar()}
@@ -27,8 +27,9 @@ object nivel1{
     keyboard.right().onPressDo{mario.derecha()}
     keyboard.left().onPressDo{mario.izquierda()}
 	keyboard.r().onPressDo{mario.recuperar()}
-		
-		
+	donkeyKong.agregarPosicion()
+	
+	
 		//Plataformas
 		(1..18).forEach{n=>posPlataformas.add(new Position(x=n,y=0))}
 		(1..17).forEach{n=>posPlataformas.add(new Position(x=n,y=3))}
@@ -46,6 +47,8 @@ object nivel1{
 		(13..15).forEach{n=>posEscaleras.add(new Position(x=13,y=n))}
 		(16..17).forEach{n=>posEscaleras.add(new Position(x=10,y=n))}
 		posEscaleras.forEach{p => self.dibujar(new Escalera(position = p))}
+		
+		game.addVisual(mario)
 		}
 		method dibujar(dibujo) {
 			game.addVisual(dibujo)

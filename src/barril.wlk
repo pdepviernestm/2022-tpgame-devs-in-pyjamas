@@ -32,7 +32,8 @@ class Barril{
         game.addVisual(self)
         game.onTick(velocidad,"moverBarril",{self.mover(direccionActual)})
 		//game.whenCollideDo(mario, {barril=>barril.efecto()})
-		game.onTick(500,"colision",{mario.colision()})
+		game.onTick(50,"colision",{mario.colision()})
+		//game.whenCollideDo(mario,{mario.colision()})
     }
     method detener(){
         game.removeVisual(self)
@@ -48,14 +49,18 @@ class BarrilNegro inherits Barril(image = "barrilNegro.png",animations=["barrilN
 	//override method efecto(){mario.danio(5)}
 }
 
-class BarrilVerde inherits Barril(image = "barrilVerde.png"){
+class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilVerde.png","barrilVerde.png","barrilVerde.png","barrilVerde.png"]){
+	override method efecto(){
+		game.schedule(3000,{mario.danio(1)})
+		game.schedule(6000,{mario.danio(1)})
+		game.schedule(9000,{mario.danio(1)})
+		}
 }
 
-class BarrilCeleste inherits Barril(image = "barrilCeleste.png",position = game.at(5,7)){
-	override method efecto(){}
+class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilCeleste.png","barrilCeleste.png","barrilCeleste.png","barrilCeleste.png"]){
+	override method efecto(){
+		const posicionActual = mario.position()
+		game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
+		game.schedule(3000,{game.removeTickEvent("stun")})
+	}
 }
-
-const bco1 = new BarrilComun()
-const bn1 = new BarrilNegro()
-//const bv1 = new BarrilVerde()
-//const bce1 = new BarrilCeleste()
