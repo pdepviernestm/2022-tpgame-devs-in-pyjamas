@@ -1,7 +1,6 @@
 import wollok.game.*
 import mario.*
 
-
 class PowerUps{
 	
 	var property posicion
@@ -19,7 +18,10 @@ class PowerUps{
 }
 
 class Mate inherits PowerUps { // ver si ponemos como objeto o class
-
+//object mate{
+//	const property position = game.at(5,3)
+//  	const property image = "mate50.png"
+//}
 	
 	override method efecto(){
 		//mario.subirVida(5) ===>> PENSAR BIEN
@@ -47,7 +49,7 @@ class Espada inherits PowerUps {
 	
 //	override method efecto(){
 //		
-//		mario.invecible()
+//		mario.invencible()
 		// QUE SUENE LA CANCION DEL MONKEY LOKO :P
 //	}
 			//SI LO HACEMOS CON EL CODE DE KONAMI TIENE QUE SER OBJETO
@@ -69,4 +71,4 @@ class Espada inherits PowerUps {
 //    // const y = (0.. game.height()-1).anyOne() 
 //    position = game.at(x,y) 
 //  }
-}
+//}

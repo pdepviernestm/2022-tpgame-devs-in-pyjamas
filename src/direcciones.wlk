@@ -1,4 +1,3 @@
-
 class Direccion {
 	method siguiente(position)
 }

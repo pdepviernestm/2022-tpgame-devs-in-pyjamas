@@ -1,10 +1,6 @@
 import wollok.game.*
-import example.*
-import niveles.*
-import plataformas.*
-import barril.*
-import direcciones.*
-import mario.*
+import nivel1.*
+import intro.*
 
 program donkeyKong{
 	game.width(20)
@@ -12,18 +8,7 @@ program donkeyKong{
 	game.cellSize(50)
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
-	
-	
-	
-	
-	//game.addVisual(mate)
-	
-	//game.addVisual(bv1)
-	//game.addVisual(bce1)
-	//game.onTick(4000,"barriles",{(new BarrilComun()).iniciar()})
-	
 
-//	whenKeyPressedDo(up, {mario.move(mario.position().up(1))})
   	//intro.cargar()
   	nivel1.cargar()
   	

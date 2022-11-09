@@ -1,8 +1,8 @@
 import wollok.game.*
 import consultas.*
-import niveles.*
-import barril.*
-import example.*
+import DK.*
+import interfaz.*
+//import barriles.*
 
 object mario{
 	var property position = game.at(5,5)
