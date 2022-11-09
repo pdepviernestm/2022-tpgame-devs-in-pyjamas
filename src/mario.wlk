@@ -8,6 +8,7 @@ object mario{
 	var property position = game.at(5,5)
   	const property image = "mario.png"
   	var property vida = 5
+  	var property invertido = 0
     method bajar(){
     	if(consulta.existeEscaleraAbajo(self)) position = position.down(1)
     }
@@ -28,10 +29,13 @@ object mario{
     method izquierda(){
     	if (!consulta.existePlataformaIzq(self)) position = position.left(1)
     }
-    method danio(n){
-    	vida = (vida - n).max(0)
-    	if(vida==0) game.say(self,"mamma mia")
-    	interfaz.corazones().get(vida).vaciar()
+	method danio(n){
+    	vida = (vida - 1).max(0)
+        if(vida==0) game.say(self,"mamma mia")
+        interfaz.corazones().get(vida).vaciar()
+        if(vida > 0 && n >1 ){
+            self.danio(n-1 )
+       }
     }
     method puedePisarse() = false
 	method esEscalera() = false

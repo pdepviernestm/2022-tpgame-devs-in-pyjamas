@@ -46,7 +46,7 @@ class BarrilComun inherits Barril(image = "barrilComun.png",animations=["comun1.
 }
 
 class BarrilNegro inherits Barril(image = "barrilNegro.png",animations=["barrilNegro1.png","barrilNegro2.png","barrilNegro3.png","barrilNegro4.png"]){
-	//override method efecto(){mario.danio(5)}
+	override method efecto(){mario.danio(3)}
 }
 
 class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilVerde.png","barrilVerde.png","barrilVerde.png","barrilVerde.png"]){
@@ -64,3 +64,5 @@ class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["bar
 		game.schedule(3000,{game.removeTickEvent("stun")})
 	}
 }
+
+

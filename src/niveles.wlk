@@ -8,6 +8,7 @@ import mario.*
 object nivel1{
 	const property posPlataformas = []
 	const property posEscaleras = []
+	const posicionesPowerups = []
 	method cargar(){
 		//Config
 	//game.addVisual(bco1)
@@ -21,11 +22,11 @@ object nivel1{
 	game.addVisual(corazon5)
 	game.addVisual(donkeyKong)
   	game.onTick(500,"gravedad",{mario.gravedad()})
-  	keyboard.up().onPressDo{mario.subir()}
-    keyboard.down().onPressDo{mario.bajar()}
+  	keyboard.up().onPressDo{if(mario.invertido() == 0) mario.subir() else mario.bajar()}
+    keyboard.down().onPressDo{ if(mario.invertido() == 0) mario.bajar() else mario.subir()}
     keyboard.space().onPressDo{mario.saltar()}
-    keyboard.right().onPressDo{mario.derecha()}
-    keyboard.left().onPressDo{mario.izquierda()}
+    keyboard.right().onPressDo{if(mario.invertido() == 0) mario.derecha() else mario.izquierda()}
+    keyboard.left().onPressDo{if(mario.invertido() == 0) mario.izquierda() else mario.derecha()}
 	keyboard.r().onPressDo{mario.recuperar()}
 	donkeyKong.agregarPosicion()
 	
