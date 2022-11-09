@@ -38,8 +38,8 @@ object intro{
 	}
 	
 	method contador(){
-	if (contador == 1) contador = 0 else contador = 1
-	return contador
+		if (contador == 1) contador = 0 else contador = 1
+		return contador
 	}
 	
 	method logo(){

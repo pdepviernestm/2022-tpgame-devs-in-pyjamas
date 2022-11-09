@@ -17,8 +17,8 @@ class Barril{
         self.cambiarImagen() }else{
             position = abajo.siguiente(position)
             if(position.x() == 18 || position.x() == 1) direccionActual = direccionActual.opuesto()
-            }
-        if(position.y() < -1){self.detener()}
+       		if(position.y() < -1){self.detener()}
+        }
     }
     method cambiarImagen(){
         if(indice<3) indice=indice+1 else indice=0
@@ -31,9 +31,7 @@ class Barril{
     method iniciar(){
         game.addVisual(self)
         game.onTick(velocidad,"moverBarril",{self.mover(direccionActual)})
-		//game.whenCollideDo(mario, {barril=>barril.efecto()})
 		game.onTick(50,"colision",{mario.colision()})
-		//game.whenCollideDo(mario,{mario.colision()})
     }
     method detener(){
         game.removeVisual(self)

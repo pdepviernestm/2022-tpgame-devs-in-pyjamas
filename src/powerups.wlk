@@ -3,18 +3,30 @@ import mario.*
 
 class PowerUps{
 	
-	var property posicion
+	var property position
 	var property image
 	
+	method puedePisarse() = true
+	method esEscalera() = false
+	method esPlataforma() = false
+	method esBarril()=false
 	
 	method iniciar(){
-		game.addVisual(self)
-		game.schedule(5000, {game.removeVisual(self)})
-		game.onCollideDo(mario, {power => power.efecto()}    )
+//		game.addVisual(self)
+//		game.schedule(5000, {game.removeVisual(self)})
+//		game.onCollideDo(mario, {power => power.efecto()}    )
+		
+		game.onCollideDo(mario,{power => power.efecto() game.removeVisual(self)})
+		game.sound("powerup").play()		
 	}
+	method efecto(){}		
+}
 
-	method efecto(){}
-			
+object estrella inherits PowerUps(position = game.at(6,1),image = "estrella50.png"){
+	override method efecto(){
+		mario.invencible(true)
+		game.schedule(10000,{mario.invencible(false)})
+	}
 }
 
 class Mate inherits PowerUps { // ver si ponemos como objeto o class

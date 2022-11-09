@@ -5,6 +5,7 @@ import barriles.*
 import DK.*
 import mario.*
 import corazones.*
+import powerups.*
 
 object nivel1{
 	const property posPlataformas = []
@@ -27,7 +28,7 @@ object nivel1{
 	    keyboard.left().onPressDo{if(mario.invertido() == 0) mario.izquierda() else mario.derecha()}
 		keyboard.r().onPressDo{mario.recuperar()}
 		donkeyKong.agregarPosicion()
-	
+		
 
 		//Plataformas
 		(1..18).forEach{n=>posPlataformas.add(new Position(x=n,y=0))}
@@ -48,6 +49,10 @@ object nivel1{
 		posEscaleras.forEach{p => self.dibujar(new Escalera(position = p))}
 		
 		game.addVisual(mario)
+		
+//		self.dibujar(estrella) 
+//		estrella.iniciar()
+//		estrella.position(game.at(6,1))		
 		}
 		method dibujar(dibujo) {
 			game.addVisual(dibujo)
