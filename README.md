@@ -1,10 +1,11 @@
-# Nombre del juego (<- borrar y completar)
+# Donkey Kong
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Canevaro, Matías Nicolás
+- Caserta, Nicolás Mario
+- Fernandez, Santiago
+- Manfredi, Valentín Nehuen
 
 ## Capturas
 
@@ -14,9 +15,8 @@
 
 (Escribirlas)
 
-
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
+- K2005 / UTN FRBA
+- Version de Wollok: 3.0.0
 - Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
