@@ -63,10 +63,11 @@ object nivel1{
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=13))}
 		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=16))}
 		(8..12).forEach{n=>posPowerups.add(new Position(x=n,y=18))}
-		posPowerups.forEach{p => self.dibujar(new Powerup(position = p))}
-		
+		game.onTick(5000,"powerups",{(new PowerUp(position = posPowerups.get(0.randomUpTo(90)),image="mate.png").iniciar())})
+	
 		game.addVisual(mario)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
+		game.whenCollideDo(mario,{power => power.efecto() game.removeVisual(power)})		
 //		self.dibujar(estrella) 
 //		estrella.iniciar()
 //		estrella.position(game.at(6,1))		

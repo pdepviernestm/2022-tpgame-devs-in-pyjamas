@@ -11,13 +11,13 @@ class PowerUp{
 	method esPlataforma() = false
 	method esBarril()=false
 	
-//	method iniciar(){
-//		game.addVisual(self)
-//		game.schedule(5000, {game.removeVisual(self)})
-//		game.onCollideDo(mario, {power => power.efecto()})
-//		game.onCollideDo(mario,{power => power.efecto() game.removeVisual(self)})
-//		game.sound("powerup").play()		
-//	}
+	method iniciar(){
+		game.addVisual(self)
+		
+		game.schedule(5000, {if(game.hasVisual(self)) game.removeVisual(self)})
+
+	//	game.sound("powerup").play()		
+	}
 	method efecto(){}		
 }
 
@@ -35,7 +35,7 @@ class Mate inherits PowerUp { // ver si ponemos como objeto o class
 //}
 	
 	override method efecto(){
-		//mario.subirVida(5) ===>> PENSAR BIEN
+		//mario.recuperar() ===>> PENSAR BIEN
 	
 	}
 }
@@ -43,7 +43,7 @@ class Mate inherits PowerUp { // ver si ponemos como objeto o class
 class HonguitoRojo inherits PowerUp {  
 	
 	override method efecto(){
-		//mario.subirVida(1)
+		//mario.recuperar()
 	}
 }
 
