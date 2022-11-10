@@ -1,8 +1,8 @@
 import wollok.game.*
 import mario.*
+import nivel1.*
 
 class PowerUp{
-	
 	var property position
 	var property image
 	
@@ -13,41 +13,32 @@ class PowerUp{
 	method esPowerUp()=true
 	method iniciar(){
 		game.addVisual(self)
-		
-		game.schedule(5000, {if(game.hasVisual(self)) game.removeVisual(self)})
-
-	//	game.sound("powerup").play()		
+		game.schedule(10000, {if(game.hasVisual(self)) game.removeVisual(self)})
+		//game.sound("powerup.mp3").play()		
 	}
 	method efecto(){}		
 }
 
-object estrella inherits PowerUp(position = game.at(6,1),image = "estrella50.png"){
+class Estrella inherits PowerUp(image = "estrella50.png"){
 	override method efecto(){
 		mario.invencible(true)
 		game.schedule(10000,{mario.invencible(false)})
 	}
 }
 
-class Mate inherits PowerUp { // ver si ponemos como objeto o class
-//object mate{
-//	const property position = game.at(5,3)
-//  	const property image = "mate50.png"
-//}
-	
+class Mate inherits PowerUp(image = "mate50.png") {
 	override method efecto(){
-		//mario.recuperar() ===>> PENSAR BIEN
-	
+		mario.recuperar(5)
 	}
 }
 
-class HonguitoRojo inherits PowerUp {  
-	
+class HonguitoRojo inherits PowerUp(image = "mariosaltaizq.png"){  
 	override method efecto(){
-		//mario.recuperar()
+		mario.recuperar(1)
 	}
 }
 
-class HonguitoVerde inherits PowerUp {  
+class HonguitoVerde inherits PowerUp(image = "mario.png"){  
 	
 	override method efecto(){
 		mario.invertido(1)

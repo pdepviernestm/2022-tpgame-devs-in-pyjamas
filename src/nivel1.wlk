@@ -19,22 +19,19 @@ object nivel1{
 		//game.onTick(10000,"powerups",{[new Estrella(),new Mate()].get((0..1).anyOne()).game.addVisual(self)})
 		//game.onTick(25,"colision",{mario.colision()})
 		
-		game.addVisual(corazon6)
-		game.addVisual(corazon7)
-		
 		game.addVisual(corazon1)
 		game.addVisual(corazon2)
 		game.addVisual(corazon3)
 		game.addVisual(corazon4)
 		game.addVisual(corazon5)
 		game.addVisual(donkeyKong)
-	  	game.onTick(500,"gravedad",{mario.gravedad()})
+	  	game.onTick(250,"gravedad",{mario.gravedad()})
 	  	keyboard.up().onPressDo{if(mario.invertido() == 0) mario.subir() else mario.bajar()}
 	    keyboard.down().onPressDo{ if(mario.invertido() == 0) mario.bajar() else mario.subir()}
 	    keyboard.space().onPressDo{if (!mario.stun()) mario.saltar()}
 	    keyboard.right().onPressDo{if(mario.invertido() == 0) mario.derecha() else mario.izquierda()}
 	    keyboard.left().onPressDo{if(mario.invertido() == 0) mario.izquierda() else mario.derecha()}
-		keyboard.r().onPressDo{mario.recuperar()}
+		keyboard.r().onPressDo{mario.recuperar(1)}
 		donkeyKong.agregarPosicion()
 		
 
@@ -57,21 +54,23 @@ object nivel1{
 		posEscaleras.forEach{p => self.dibujar(new Escalera(position = p))}
 		//Powerups
 		(1..18).forEach{n=>posPowerups.add(new Position(x=n,y=1))}
+		(1..18).forEach{n=>posPowerups.add(new Position(x=n,y=2))}
 		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=4))}
+		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=5))}
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=7))}
+		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=8))}
 		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=10))}
+		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=11))}
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=13))}
-		(1..17).forEach{n=>posPowerups.add(new Position(x=n,y=16))}
-		(8..12).forEach{n=>posPowerups.add(new Position(x=n,y=18))}
-		game.onTick(5000,"powerups",{(new PowerUp(position = posPowerups.get(0.randomUpTo(90)),image="mate.png").iniciar())})
+		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=14))}
+		
+		game.onTick(10000,"powerups",{[(new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
 	
 		game.addVisual(mario)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
-		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })		
-//		self.dibujar(estrella) 
-//		estrella.iniciar()
-//		estrella.position(game.at(6,1))		
+		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })			
 		}
+		method posRandom()= posPowerups.get(0.randomUpTo(posPowerups.size()-1))
 		method dibujar(dibujo) {
 			game.addVisual(dibujo)
 			return dibujo

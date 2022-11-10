@@ -16,8 +16,3 @@ const corazon2 = new Corazon(position = game.at(15,18))
 const corazon3 = new Corazon(position = game.at(16,18))
 const corazon4 = new Corazon(position = game.at(17,18))
 const corazon5 = new Corazon(position = game.at(18,18))
-
-
-//BORRAR ESTO DESPUES:
-const corazon6 = new Corazon(position = game.at(1,1))
-const corazon7 = new Corazon(position = game.at(8,1))
