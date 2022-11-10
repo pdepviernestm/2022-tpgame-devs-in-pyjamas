@@ -1,7 +1,7 @@
 import wollok.game.*
 import mario.*
 
-class PowerUps{
+class PowerUp{
 	
 	var property position
 	var property image
@@ -11,25 +11,24 @@ class PowerUps{
 	method esPlataforma() = false
 	method esBarril()=false
 	
-	method iniciar(){
+//	method iniciar(){
 //		game.addVisual(self)
 //		game.schedule(5000, {game.removeVisual(self)})
-//		game.onCollideDo(mario, {power => power.efecto()}    )
-		
-		game.onCollideDo(mario,{power => power.efecto() game.removeVisual(self)})
-		game.sound("powerup").play()		
-	}
+//		game.onCollideDo(mario, {power => power.efecto()})
+//		game.onCollideDo(mario,{power => power.efecto() game.removeVisual(self)})
+//		game.sound("powerup").play()		
+//	}
 	method efecto(){}		
 }
 
-object estrella inherits PowerUps(position = game.at(6,1),image = "estrella50.png"){
+object estrella inherits PowerUp(position = game.at(6,1),image = "estrella50.png"){
 	override method efecto(){
 		mario.invencible(true)
 		game.schedule(10000,{mario.invencible(false)})
 	}
 }
 
-class Mate inherits PowerUps { // ver si ponemos como objeto o class
+class Mate inherits PowerUp { // ver si ponemos como objeto o class
 //object mate{
 //	const property position = game.at(5,3)
 //  	const property image = "mate50.png"
@@ -41,14 +40,14 @@ class Mate inherits PowerUps { // ver si ponemos como objeto o class
 	}
 }
 
-class HonguitoRojo inherits PowerUps {  
+class HonguitoRojo inherits PowerUp {  
 	
 	override method efecto(){
 		//mario.subirVida(1)
 	}
 }
 
-class HonguitoVerde inherits PowerUps {  
+class HonguitoVerde inherits PowerUp {  
 	
 	override method efecto(){
 		mario.invertido(1)
@@ -57,7 +56,7 @@ class HonguitoVerde inherits PowerUps {
 
 }
 
-class Espada inherits PowerUps {
+class Espada inherits PowerUp {
 	
 //	override method efecto(){
 //		
@@ -67,10 +66,6 @@ class Espada inherits PowerUps {
 			//SI LO HACEMOS CON EL CODE DE KONAMI TIENE QUE SER OBJETO
 		
 }
-	
-
-// 
-
 
 //object caja {
 //  var property position = game.center()

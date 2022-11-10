@@ -1,23 +1,29 @@
 import wollok.game.*
 import direcciones.*
-//import plataformas.*
-//import nivel1.*
 import consultas.*
 import mario.*
+import nivel1.*
 
 class Barril{
     var property position = game.at(5,16)
     var property image = animations.get(0)
     var property animations
+    var property string = nivel1.contadorBarriles().toString()
+    
     var indice = 0
-    const property velocidad = 100//era 100
+    const property velocidad = 100
     var property direccionActual = derecha
     method mover(direccion){
-        if(consulta.existePlataforma(self)) {position = direccionActual.siguiente(position)
-        self.cambiarImagen() }else{
-            position = abajo.siguiente(position)
-            if(position.x() == 18 || position.x() == 1) direccionActual = direccionActual.opuesto()
-       		if(position.y() < -1){self.detener()}
+        if(position.y() < -1){if (game.hasVisual(self)) self.detener()}
+        else{
+        	if(consulta.existePlataforma(self)){
+        	position = direccionActual.siguiente(position) 
+        	self.cambiarImagen()
+        }
+	        else{
+	            position = abajo.siguiente(position)
+	            if(position.x() == 18 || position.x() == 1) direccionActual = direccionActual.opuesto()
+	        }
         }
     }
     method cambiarImagen(){
@@ -30,12 +36,11 @@ class Barril{
     method esBarril() = true
     method iniciar(){
         game.addVisual(self)
-        game.onTick(velocidad,"moverBarril",{self.mover(direccionActual)})
-		game.onTick(50,"colision",{mario.colision()})
+        game.onTick(velocidad,string,{self.mover(direccionActual)})
     }
     method detener(){
         game.removeVisual(self)
-        game.removeTickEvent("moverBarril")
+        game.removeTickEvent(string)
     }
 	method efecto(){mario.danio(1)}
 }
@@ -58,7 +63,8 @@ class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilV
 class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilCeleste.png","barrilCeleste.png","barrilCeleste.png","barrilCeleste.png"]){
 	override method efecto(){
 		const posicionActual = mario.position()
+		mario.stun(true)
 		game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
-		game.schedule(3000,{game.removeTickEvent("stun")})
+		game.schedule(3000,{game.removeTickEvent("stun") mario.stun(false)})
 	}
 }

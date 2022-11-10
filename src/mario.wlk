@@ -10,6 +10,7 @@ object mario{
   	var property vida = 5
   	var property invertido = 0
   	var property invencible = false
+  	var property stun = false
     method bajar(){
     	if(consulta.existeEscaleraAbajo(self)) position = position.down(1)
     }
@@ -33,7 +34,7 @@ object mario{
 	method danio(n){
 		if(!invencible){
 			vida = (vida - 1).max(0)
-	        if(vida==0) game.sound("death.mp3").play()
+	        //if(vida==0) game.sound("death.mp3").play()
 	        interfaz.corazones().get(vida).vaciar()
 	        if(vida > 0 && n > 1) self.danio(n-1)
 		}
