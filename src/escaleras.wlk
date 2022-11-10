@@ -6,4 +6,5 @@ class Escalera{
   	method esPlataforma() = false
   	method efecto(){}
   	method esBarril() = false
+  	method esPowerUp()= false
 }

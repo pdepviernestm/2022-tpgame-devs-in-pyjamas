@@ -67,7 +67,7 @@ object nivel1{
 	
 		game.addVisual(mario)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
-		game.whenCollideDo(mario,{power => power.efecto() game.removeVisual(power)})		
+		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })		
 //		self.dibujar(estrella) 
 //		estrella.iniciar()
 //		estrella.position(game.at(6,1))		

@@ -5,6 +5,8 @@ object donkeyKong{
 	var property listaPosiciones = []
   	const property image = "DK200_OK.png"
   	method esDK() = true
+	method esPowerUp()= false
+	method esPlataforma()= false
 	
 	method agregarPosicion(){
 		listaPosiciones = [position,position.up(1),position.up(1).up(1),position.up(1).up(1).up(1),

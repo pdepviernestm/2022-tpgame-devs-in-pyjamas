@@ -13,6 +13,7 @@ class Barril{
     var indice = 0
     const property velocidad = 100
     var property direccionActual = derecha
+    method esPowerUp()= false
     method mover(direccion){
         if(position.y() < -1){if (game.hasVisual(self)) self.detener()}
         else{

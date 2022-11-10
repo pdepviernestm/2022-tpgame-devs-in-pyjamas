@@ -10,7 +10,7 @@ class PowerUp{
 	method esEscalera() = false
 	method esPlataforma() = false
 	method esBarril()=false
-	
+	method esPowerUp()=true
 	method iniciar(){
 		game.addVisual(self)
 		

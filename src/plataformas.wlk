@@ -6,4 +6,5 @@ class Plataforma {
 	method esPlataforma() = true
 	method efecto(){}
 	method esBarril() = false
+	method esPowerUp()= false
 }
