@@ -5,8 +5,7 @@ object home {
 	var property image= "start.png"
 	var property imagenes=["start.png","howtoplay.png","credits.png","exit.png"]
 	const property position= game.at(0,0)
-	
-	
+	var property cancion = game.sound("A_Secret_Course.mp3")
 	
 	method cargar(){
 		game.addVisual(self)
@@ -14,12 +13,17 @@ object home {
 		game.addVisual(dkhome)
 		game.addVisual(fuegoInicio)
 		
+		//game.schedule(1,{game.sound("A_Secret_Course.mp3").play()})
+		
+		
 		dkhome.animacion()
 		fuegoInicio.animacion()
 		
 		keyboard.up().onPressDo{cursor.subir()}
 		keyboard.down().onPressDo{cursor.bajar()}
 		keyboard.enter().onPressDo{cursor.seleccionar()}
+		
+		game.schedule(1,{cancion.play()})
 	}
 	
 	method detener(){
@@ -40,9 +44,9 @@ object cursor{
 		if (self.position().y()>1) {position=position.down(2) posImagen=posImagen+1 home.image(home.imagenes().get(posImagen))}
 	}
 	
-	
 	method seleccionar(){
-		if (self.position().y()==7){home. detener() nivel1.cargar()}
+		if (self.position().y()==7){home.detener() game.schedule(1,{home.cancion().stop()}) nivel1.cargar()}
+		if (self.position().y()==1){game.stop()}
 	}
 }
 

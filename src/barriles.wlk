@@ -62,10 +62,20 @@ class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilV
 }
 
 class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilCeleste.png","barrilCeleste.png","barrilCeleste.png","barrilCeleste.png"]){
-	override method efecto(){
-		const posicionActual = mario.position()
-		mario.stun(true)
-		game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
-		game.schedule(3000,{game.removeTickEvent("stun") mario.stun(false)})
-	}
+    override method efecto(){
+        const posicionActual = mario.position()
+        mario.stun(true)
+        game.addVisualIn(cuboDeHielo,mario.position())
+        game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
+        game.schedule(3000,{game.removeTickEvent("stun") mario.stun(false) game.removeVisual(cuboDeHielo)})
+    }
+}
+
+object cuboDeHielo{
+	//const property position
+	var property image="cubohielo.png"
+	method esBarril()= false
+	method esPlataforma()= false
+	method esEscalera()= false
+	method esPowerUp() = false
 }

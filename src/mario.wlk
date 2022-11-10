@@ -14,10 +14,21 @@ object mario{
   	var property stun = false
   	var property direccion = derecha
     method bajar(){
-    	if(consulta.existeEscaleraAbajo(self)) position = position.down(1)
+    	if(consulta.existeEscaleraAbajo(self)){
+    		position = position.down(1)
+    		if(image == "marioescalerader.png") image = "marioescaleraizq.png"
+    		else image = "marioescalerader.png"
+    	} 
     }
     method subir(){
-    	if(consulta.existeEscaleraArriba(self)) position = position.up(1)
+    	if(consulta.existeEscaleraArriba(self)){
+    		position = position.up(1)
+    		if(!consulta.existeEscaleraArriba(self)) {image="mariotrepando.png" game.schedule(200,{image="marioder.png"})}
+    		else{
+    			if(image == "marioescalerader.png") image = "marioescaleraizq.png"
+    			else image = "marioescalerader.png"
+    		}
+    	}
     }
     method saltar(){
     	if(!consulta.existeEscaleraArriba(self) && consulta.existePlataforma(self)) {
@@ -43,7 +54,6 @@ object mario{
     		else image = "marioder.png"
     	}
     }
-
     method izquierda(){
     	if (!consulta.existePlataformaIzq(self)){
     		position = position.left(1) 
@@ -65,7 +75,11 @@ object mario{
 	method esEscalera() = false
 	method esBarril() = false
 	method gravedad(){
-		if (!consulta.existePlataforma(self)) position = position.down(1) 
+		if (!consulta.existePlataforma(self)) {
+			position = position.down(1) 
+			if(image=="marioizq.png") image = "mariosaltaizq.png"
+    		if(image=="marioder.png") image = "mariosaltader.png"
+		}
     	else{
     		if(image=="mariosaltaizq.png") image = "marioizq.png"
     		if(image=="mariosaltader.png") image = "marioder.png"
@@ -76,7 +90,9 @@ object mario{
 		if(donkeyKong.listaPosiciones().contains(position)) self.danio(5)
 	}
 	method recuperar(n){
-		interfaz.corazones().get(vida).llenar()
-		vida = (vida+n).min(5)
+			vida = (vida + 1).min(5)
+	        //if(vida==0) game.sound("death.mp3").play()
+	        interfaz.corazones().get(vida-1).llenar()
+	        if(vida < 5 && n > 1) self.recuperar(n-1)
 	}
 }
