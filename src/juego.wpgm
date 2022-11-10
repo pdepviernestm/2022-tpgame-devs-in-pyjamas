@@ -1,7 +1,7 @@
 import wollok.game.*
 import nivel1.*
 import intro.*
-
+import home.*
 program donkeyKong{
 	game.width(20)
 	game.height(20)
@@ -10,7 +10,8 @@ program donkeyKong{
 	game.boardGround("fondo.jpg")
 
   	//intro.cargar()
-  	nivel1.cargar()
+  	//nivel1.cargar()
+  	home.cargar()
   	
   	game.start()
 }

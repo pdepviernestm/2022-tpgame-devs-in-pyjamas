@@ -4,8 +4,8 @@ import escaleras.*
 import barriles.*
 import DK.*
 import mario.*
-import corazones.*
 import powerups.*
+import interfaz.*
 
 object nivel1{
 	const property posPlataformas = []
@@ -19,11 +19,7 @@ object nivel1{
 		//game.onTick(10000,"powerups",{[new Estrella(),new Mate()].get((0..1).anyOne()).game.addVisual(self)})
 		//game.onTick(25,"colision",{mario.colision()})
 		
-		game.addVisual(corazon1)
-		game.addVisual(corazon2)
-		game.addVisual(corazon3)
-		game.addVisual(corazon4)
-		game.addVisual(corazon5)
+		interfaz.cargar()
 		game.addVisual(donkeyKong)
 	  	game.onTick(250,"gravedad",{mario.gravedad()})
 	  	keyboard.up().onPressDo{if(mario.invertido() == 0) mario.subir() else mario.bajar()}
@@ -64,7 +60,7 @@ object nivel1{
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=13))}
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=14))}
 		
-		game.onTick(10000,"powerups",{[(new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
+		game.onTick(10000,"powerups",{[new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
 	
 		game.addVisual(mario)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})

@@ -3,15 +3,15 @@ import corazones.*
 
 object interfaz{
 	const property corazones = [corazon1,corazon2,corazon3,corazon4,corazon5]
-	method dibujar(dibujo){
-		game.addVisual(dibujo)
-		return dibujo
-	}
-	method restart() {
-		game.clear()
-		self.cargar()
-	}
+//	method restart() {
+//		game.clear()
+//		self.cargar()
+//	}
 	method cargar(){
-		//(14..18).forEach{n=>posCorazones.add(new Position(x=10,y=n))}
+		game.addVisual(corazon1)
+		game.addVisual(corazon2)
+		game.addVisual(corazon3)
+		game.addVisual(corazon4)
+		game.addVisual(corazon5)
 	}
 }
