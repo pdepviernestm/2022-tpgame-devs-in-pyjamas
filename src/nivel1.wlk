@@ -16,8 +16,7 @@ object nivel1{
 	method cargar(){
 		//Config
 		game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro(),new BarrilCeleste(), new BarrilVerde()].get((0..3).anyOne()).iniciar() contadorBarriles += 1})
-		//game.onTick(10000,"powerups",{[new Estrella(),new Mate()].get((0..1).anyOne()).game.addVisual(self)})
-		//game.onTick(25,"colision",{mario.colision()})
+		game.onTick(10000,"powerups",{[new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
 		
 		interfaz.cargar()
 		game.addVisual(donkeyKong)
@@ -60,11 +59,15 @@ object nivel1{
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=13))}
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=14))}
 		
-		game.onTick(10000,"powerups",{[new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
-	
 		game.addVisual(mario)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
 		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })			
+		game.schedule(250,{game.sound("here_we_go.mp3").play()})
+		
+		
+		//game.schedule(500,{game.sound("main_theme.mp3").play()}) //ESTA MUY ALTO
+		//keyboard.m().onPressDo({game.sound("main_theme.mp3").volume(0.05)})
+		
 		}
 		method posRandom()= posPowerups.get(0.randomUpTo(posPowerups.size()-1))
 		method dibujar(dibujo) {

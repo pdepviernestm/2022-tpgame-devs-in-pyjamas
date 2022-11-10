@@ -66,7 +66,7 @@ object mario{
 	method danio(n){
 		if(!invencible){
 			vida = (vida - 1).max(0)
-	        //if(vida==0) game.sound("death.mp3").play()
+	        if(vida==0) game.sound("death.mp3").play()
 	        interfaz.corazones().get(vida).vaciar()
 	        if(vida > 0 && n > 1) self.danio(n-1)
 		}
@@ -90,9 +90,8 @@ object mario{
 		if(donkeyKong.listaPosiciones().contains(position)) self.danio(5)
 	}
 	method recuperar(n){
-			vida = (vida + 1).min(5)
-	        //if(vida==0) game.sound("death.mp3").play()
-	        interfaz.corazones().get(vida-1).llenar()
-	        if(vida < 5 && n > 1) self.recuperar(n-1)
+		vida = (vida + 1).min(5)
+	    interfaz.corazones().get(vida-1).llenar()
+	    if(vida < 5 && n > 1) self.recuperar(n-1)
 	}
 }

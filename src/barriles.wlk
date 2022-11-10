@@ -43,14 +43,21 @@ class Barril{
         game.removeVisual(self)
         game.removeTickEvent(string)
     }
-	method efecto(){mario.danio(1)}
+	method efecto(){}
 }
 
 class BarrilComun inherits Barril(image = "barrilComun.png",animations=["comun1.png","comun2.png","comun3.png","comun4.png"]){
+	override method efecto(){
+		mario.danio(1)
+		game.sound("barrilComun.mp3").play()
+	}
 }
 
 class BarrilNegro inherits Barril(image = "barrilNegro.png",animations=["barrilNegro1.png","barrilNegro2.png","barrilNegro3.png","barrilNegro4.png"]){
-	override method efecto(){mario.danio(3)}
+	override method efecto(){
+		mario.danio(3)
+		game.sound("barrilNegro.mp3").play()
+	}
 }
 
 class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilVerde.png","barrilVerde.png","barrilVerde.png","barrilVerde.png"]){
@@ -58,7 +65,8 @@ class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilV
 		game.schedule(3000,{mario.danio(1)})
 		game.schedule(6000,{mario.danio(1)})
 		game.schedule(9000,{mario.danio(1)})
-		}
+		game.sound("barrilVerde.mp3").play()
+	}
 }
 
 class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilCeleste.png","barrilCeleste.png","barrilCeleste.png","barrilCeleste.png"]){
@@ -68,12 +76,12 @@ class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["bar
         game.addVisualIn(cuboDeHielo,mario.position())
         game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
         game.schedule(3000,{game.removeTickEvent("stun") mario.stun(false) game.removeVisual(cuboDeHielo)})
-    }
+		game.sound("barrilCeleste.mp3").play()    	
+	}
 }
 
 object cuboDeHielo{
-	//const property position
-	var property image="cubohielo.png"
+	const property image="cubohielo.png"
 	method esBarril()= false
 	method esPlataforma()= false
 	method esEscalera()= false
