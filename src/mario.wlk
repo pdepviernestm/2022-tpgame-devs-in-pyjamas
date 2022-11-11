@@ -4,6 +4,7 @@ import DK.*
 import interfaz.*
 import nivel1.*
 import direcciones.*
+import gameOver.*
 
 object mario{
 	var property position = game.at(5,5)
@@ -64,12 +65,14 @@ object mario{
     	}
     }
 	method danio(n){
-		if(!invencible){
-			vida = (vida - 1).max(0)
-	        if(vida==0) game.sound("death.mp3").play()
-	        interfaz.corazones().get(vida).vaciar()
-	        if(vida > 0 && n > 1) self.danio(n-1)
-		}
+        if(!invencible){
+            if(vida!=0){
+            vida = (vida - 1).max(0)
+            if(vida==0) {game.sound("death.mp3").play() gameOver.cargar()}
+            interfaz.corazones().get(vida).vaciar()
+            if(vida > 0 && n > 1) self.danio(n-1)
+            }
+        }
     }
     method puedePisarse() = false
 	method esEscalera() = false
@@ -86,7 +89,7 @@ object mario{
     		}
 	}
 	method colision(){
-		if(consulta.existeBarril(self)) game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto() b.detener() image="marioGolpeado.png" game.schedule(400,{image="marioder.png"})}
+		if(consulta.existeBarril(self)) game.getObjectsIn(position).filter{obj=>obj.esBarril()}.forEach{b=>b.efecto() if(vida>0) b.detener() image="marioGolpeado.png" game.schedule(400,{image="marioder.png"})}
 		if(donkeyKong.listaPosiciones().contains(position)) self.danio(5)
 	}
 	method recuperar(n){
