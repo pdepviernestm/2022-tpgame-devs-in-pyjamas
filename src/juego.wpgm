@@ -9,10 +9,9 @@ program donkeyKong{
 	game.title("Donkey Kong")
 	game.boardGround("fondo.jpg")
 
-  	//intro.cargar()
+  	intro.cargar()
   	//home.cargar()
-  	nivel1.cargar()
-  	
+  	//nivel1.cargar()
   	
   	game.start()
 }

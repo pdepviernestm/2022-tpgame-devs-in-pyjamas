@@ -49,27 +49,3 @@ class HonguitoVerde inherits PowerUp(image = "honguitoVerde.png"){
 		game.sound("1up.mp3").play()
 	}
 }
-
-class Espada inherits PowerUp {
-	
-//	override method efecto(){
-//		
-//		mario.invencible()
-		// QUE SUENE LA CANCION DEL MONKEY LOKO :P
-//	}
-			//SI LO HACEMOS CON EL CODE DE KONAMI TIENE QUE SER OBJETO
-		
-}
-
-//object caja {
-//  var property position = game.center()
-//  method image() = "caja.png"
-//  method movete() {
-//    const x = 0.randomUpTo(game.width()).truncate(0)
-//    const y = 0.randomUpTo(game.height()).truncate(0)
-//    // otra forma de generar números aleatorios
-//    // const x = (0.. game.width()-1).anyOne() 
-//    // const y = (0.. game.height()-1).anyOne() 
-//    position = game.at(x,y) 
-//  }
-//}

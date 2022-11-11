@@ -1,5 +1,6 @@
 import wollok.game.*
 import nivel1.*
+import home.*
 
 object nip{
 	var property image = "fondo.jpg"
@@ -30,7 +31,7 @@ object intro{
 	
 	method saltar(){
 		game.clear()		
-		nivel1.cargar()
+		home.cargar()
 	}
 	
 	method parpadear(){

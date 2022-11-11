@@ -5,9 +5,10 @@ import interfaz.*
 import nivel1.*
 import direcciones.*
 import gameOver.*
+import victoria.*
 
 object mario{
-	var property position = game.at(5,5)
+	var property position = game.at(1,1)
   	var property image = "marioder.png"
   	var property vida = 5
   	var property invertido = 0
@@ -24,6 +25,7 @@ object mario{
     method subir(){
     	if(consulta.existeEscaleraArriba(self)){
     		position = position.up(1)
+    		if(position == game.at(10,18)) pantallaGanar.ganar()
     		if(!consulta.existeEscaleraArriba(self)) {image="mariotrepando.png" game.schedule(200,{image="marioder.png"})}
     		else{
     			if(image == "marioescalerader.png") image = "marioescaleraizq.png"
@@ -78,7 +80,11 @@ object mario{
 	method esEscalera() = false
 	method esBarril() = false
 	method gravedad(){
-		if (!consulta.existePlataforma(self)) {
+		if(self.position().y()<0){
+			//game.sound("Mario_Fall_Waa.mp3").play() 
+			game.schedule(2000,{game.clear() gameOver.cargar()})
+		}
+		if (!consulta.existePlataforma(self)){
 			position = position.down(1) 
 			if(image=="marioizq.png") image = "mariosaltaizq.png"
     		if(image=="marioder.png") image = "mariosaltader.png"

@@ -13,9 +13,6 @@ object home {
 		game.addVisual(dkhome)
 		game.addVisual(fuegoInicio)
 		
-		//game.schedule(1,{game.sound("A_Secret_Course.mp3").play()})
-		
-		
 		dkhome.animacion()
 		fuegoInicio.animacion()
 		
@@ -68,7 +65,7 @@ object dkhome{
 	}
 }
 object fuegoInicio{
-	var property image="fueguito1"
+	var property image="fueguito1.png"
 	const property position= game.at(0,0)
 	
 	method animacion(){

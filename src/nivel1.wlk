@@ -30,7 +30,6 @@ object nivel1{
 		keyboard.r().onPressDo{mario.recuperar(1)}
 		donkeyKong.agregarPosicion()
 		
-
 		//Plataformas
 		(1..18).forEach{n=>posPlataformas.add(new Position(x=n,y=0))}
 		(1..17).forEach{n=>posPlataformas.add(new Position(x=n,y=3))}
@@ -60,16 +59,15 @@ object nivel1{
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=13))}
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=14))}
 		
+		mario.position(game.at(1,1))
+		mario.recuperar(5)
 		game.addVisual(mario)
+				
 		game.addVisual(peach)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
 		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })			
 		game.schedule(250,{game.sound("here_we_go.mp3").play()})
-		
-		
-		//game.schedule(500,{game.sound("main_theme.mp3").play()}) //ESTA MUY ALTO
-		//keyboard.m().onPressDo({game.sound("main_theme.mp3").volume(0.05)})
-		
+			
 		}
 		method posRandom()= posPowerups.get(0.randomUpTo(posPowerups.size()-1))
 		method dibujar(dibujo) {

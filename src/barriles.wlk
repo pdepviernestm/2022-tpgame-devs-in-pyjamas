@@ -48,14 +48,14 @@ class Barril{
 
 class BarrilComun inherits Barril(image = "barrilComun.png",animations=["comun1.png","comun2.png","comun3.png","comun4.png"]){
 	override method efecto(){
-		mario.danio(5)
+		mario.danio(1)
 		game.sound("barrilComun.mp3").play()
 	}
 }
 
 class BarrilNegro inherits Barril(image = "barrilNegro.png",animations=["barrilNegro1.png","barrilNegro2.png","barrilNegro3.png","barrilNegro4.png"]){
 	override method efecto(){
-		mario.danio(5)
+		mario.danio(3)
 		game.sound("barrilNegro.mp3").play()
 	}
 }
