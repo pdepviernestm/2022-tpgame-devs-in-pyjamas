@@ -43,10 +43,39 @@ object cursor{
 	
 	method seleccionar(){
 		if (self.position().y()==7){home.detener() game.schedule(1,{home.cancion().stop()}) nivel1.cargar()}
+		if (self.position().y()==5){home.detener()  howToPlay.cargar()}
+		if (self.position().y()==3) {home.detener()  credits.cargar()}
 		if (self.position().y()==1){game.stop()}
 	}
 }
 
+object credits{
+	var property position= game.at(0,0)
+	var property image= "creditos.png"
+	method cargar(){
+		game.addVisual(self)
+		keyboard.enter().onPressDo{game.clear() game.schedule(250,{home.cargar()}) }
+	}
+}
+
+object howToPlay{
+	var property position= game.at(0,0)
+	var property image= "howtoplay1.png"
+	var property imagenes= ["howtoplay1.png","howtoplay2.png","howtoplay3.png"]
+	var property contador= 0
+	method cargar(){
+		game.addVisual(self)
+		keyboard.right().onPressDo{self.derecha()}
+		keyboard.left().onPressDo{self.izquierda()}
+		keyboard.enter().onPressDo{game.clear() game.schedule(250,{home.cargar()}) }
+	}
+	method derecha(){
+		if(contador<2){ contador=contador+1 self.image(imagenes.get(contador)) }
+	}
+	method izquierda(){
+		if(contador>0){ contador=contador-1 self.image(imagenes.get(contador)) }
+	}
+}
 
 object dkhome{
 	var property image= "dkinicio.png"

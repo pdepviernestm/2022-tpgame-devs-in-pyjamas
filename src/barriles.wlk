@@ -60,7 +60,7 @@ class BarrilNegro inherits Barril(image = "barrilNegro.png",animations=["barrilN
 	}
 }
 
-class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilVerde.png","barrilVerde.png","barrilVerde.png","barrilVerde.png"]){
+class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilVerde.png","barrilverde2.png","barrilverde3.png","barrilverde4.png"]){
 	override method efecto(){
 		game.schedule(3000,{mario.danio(1)})
 		game.schedule(6000,{mario.danio(1)})
@@ -69,7 +69,7 @@ class BarrilVerde inherits Barril(image = "barrilVerde.png",animations=["barrilV
 	}
 }
 
-class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilCeleste.png","barrilCeleste.png","barrilCeleste.png","barrilCeleste.png"]){
+class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["barrilceleste1.png","barrilceleste2.png","barrilceleste3.png","barrilceleste4.png"]){
     override method efecto(){
         const posicionActual = mario.position()
         mario.stun(true)
