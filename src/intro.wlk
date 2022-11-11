@@ -31,7 +31,7 @@ object intro{
 	
 	method saltar(){
 		game.clear()		
-		home.cargar()
+		game.schedule(250,{home.cargar()})
 	}
 	
 	method parpadear(){
