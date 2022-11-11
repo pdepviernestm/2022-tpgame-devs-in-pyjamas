@@ -20,7 +20,7 @@ class Barril{
         	if(consulta.existePlataforma(self)){
         	position = direccionActual.siguiente(position) 
         	self.cambiarImagen()
-        }
+        	}
 	        else{
 	            position = abajo.siguiente(position)
 	            if(position.x() == 18 || position.x() == 1) direccionActual = direccionActual.opuesto()
@@ -76,7 +76,7 @@ class BarrilCeleste inherits Barril(image = "barrilCeleste.png",animations=["bar
         game.addVisualIn(cuboDeHielo,mario.position())
         game.onTick(50,"stun",{if(mario.position() != posicionActual) mario.position(posicionActual)})
         game.schedule(3000,{game.removeTickEvent("stun") mario.stun(false) game.removeVisual(cuboDeHielo)})
-		game.sound("barrilCeleste.mp3").play()    	
+		game.sound("barrilCeleste.mp3").play()
 	}
 }
 

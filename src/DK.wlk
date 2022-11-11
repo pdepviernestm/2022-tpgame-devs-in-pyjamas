@@ -3,7 +3,7 @@ import wollok.game.*
 object donkeyKong{
 	const property position = game.at(3,16)
 	var property listaPosiciones = []
-  	const property image = "DK200_OK.png"
+  	var property image = "DK200_OK_der.png"
   	method esDK() = true
 	method esPowerUp()= false
 	method esPlataforma()= false

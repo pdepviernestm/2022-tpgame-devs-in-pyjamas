@@ -6,6 +6,7 @@ import DK.*
 import mario.*
 import powerups.*
 import interfaz.*
+import peach.*
 
 object nivel1{
 	const property posPlataformas = []
@@ -15,7 +16,7 @@ object nivel1{
 	
 	method cargar(){
 		//Config
-		game.onTick(4000,"barriles",{[new BarrilComun(), new BarrilNegro(),new BarrilCeleste(), new BarrilVerde()].get((0..3).anyOne()).iniciar() contadorBarriles += 1})
+		game.onTick(6000,"barriles",{[new BarrilComun(), new BarrilNegro(),new BarrilCeleste(), new BarrilVerde()].get((0..3).anyOne()).iniciar() contadorBarriles += 1})
 		game.onTick(10000,"powerups",{[new Estrella(position = self.posRandom()),new Mate(position = self.posRandom()),new HonguitoRojo(position = self.posRandom()),new HonguitoVerde(position = self.posRandom())].get((0..3).anyOne()).iniciar()})
 		
 		interfaz.cargar()
@@ -60,6 +61,7 @@ object nivel1{
 		(2..18).forEach{n=>posPowerups.add(new Position(x=n,y=14))}
 		
 		game.addVisual(mario)
+		game.addVisual(peach)
 		game.whenCollideDo(mario,{b => if(b.esBarril()) mario.colision()})
 		game.whenCollideDo(mario,{power => if (power.esPowerUp()) {power.efecto() game.removeVisual(power)} })			
 		game.schedule(250,{game.sound("here_we_go.mp3").play()})
